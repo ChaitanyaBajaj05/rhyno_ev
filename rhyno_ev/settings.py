@@ -18,9 +18,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 import os
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+ALLOWED_HOSTS = ['.onrender.com']
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# In production:
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'your-dev-secret')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
